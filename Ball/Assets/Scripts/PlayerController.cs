@@ -18,12 +18,20 @@ public class PlayerController : MonoBehaviour
         {
             playerControls = new PlayerControls();
         }
-        playerControls.Player.Move.performed += HandleMove;
+    }
+
+    private void Awake()
+    {
+        if (playerControls == null)
+        {
+            playerControls = new PlayerControls();
+        }
+        playerControls.Enable();
     }
 
     void OnEnable()
     {
-        playerControls.Enable();
+        playerControls.Player.Move.performed += HandleMove;
     }
 
     private void OnDisable()
@@ -46,7 +54,7 @@ public class PlayerController : MonoBehaviour
 
     void HandleMove(InputAction.CallbackContext context)
     {
-        movement  = context.ReadValue<Vector2>();
+        movement  = context.ReadValue<Vector3>();
         Debug.Log(movement);
     }
 }
