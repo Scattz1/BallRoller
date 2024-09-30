@@ -7,37 +7,40 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     public Rigidbody rb;
-    public PlayerControls playerControls;
+    private PlayerControls _playerControls;
     public Vector2 movement;
+    public float speed;
     
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        if (playerControls == null)
+        if (_playerControls == null)
         {
-            playerControls = new PlayerControls();
+            _playerControls = new PlayerControls();
         }
+
+        speed = 3f;
     }
 
     private void Awake()
     {
-        if (playerControls == null)
+        if (_playerControls == null)
         {
-            playerControls = new PlayerControls();
+            _playerControls = new PlayerControls();
         }
-        playerControls.Enable();
+        _playerControls.Enable();
     }
 
     void OnEnable()
     {
-        playerControls.Player.Move.performed += HandleMove;
+        _playerControls.Player.Move.performed += HandleMove;
     }
 
     private void OnDisable()
     {
-        playerControls.Player.Move.performed -= HandleMove;
-        playerControls.Disable();
+        _playerControls.Player.Move.performed -= HandleMove;
+        _playerControls.Disable();
     }
 
 
@@ -49,12 +52,14 @@ public class PlayerController : MonoBehaviour
 
     void HandleLocomotion()
     {
-        rb.AddForce(movement);
+        Vector3 moveVector = new Vector3(movement.x, 0, movement.y);
+        rb.AddForce(moveVector * speed);
+        Debug.Log(moveVector);
     }
 
     void HandleMove(InputAction.CallbackContext context)
     {
-        movement  = context.ReadValue<Vector3>();
+        movement  = context.ReadValue<Vector2>();
         Debug.Log(movement);
     }
 }
