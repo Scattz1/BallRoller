@@ -301,3 +301,11 @@ AssetImportParameters requested are different than current active one (requested
   custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
   custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
   custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 155.742070 seconds.
+  path: Assets/Scripts/PlayerControls.cs
+  artifactKey: Guid(722b92e8b2cc74f2a857ab6129ed5c4c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/PlayerControls.cs using Guid(722b92e8b2cc74f2a857ab6129ed5c4c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ada0dd2bc9f443bc68359802e704d4ee') in 0.004240 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
